@@ -1,0 +1,48 @@
+{
+    "manufacturer": "er1c",
+    "keyboard_name": "iepv0",
+    "maintainer": "er1c-zh",
+    "url": "https://blog.er1c.dev/",
+    "bootloader": "stm32-dfu",
+    "processor": "stm32f072",
+    "diode_direction": "COL2ROW",
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "extrakey": true,
+        "mousekey": true,
+        "nkro": true
+    },
+    "matrix_pins": {
+        "cols": ["D0", "D4"],
+        "rows": ["C6", "D7"]
+    },
+    "split": {
+        "enabled": true,
+        "soft_serial_pin": "D1",
+        "transport": {
+            "protocol": "serial"
+        }
+    },
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x0000",
+        "vid": "0xFEED"
+    },
+    "layouts": {
+        "LAYOUT_ortho_4x4": {
+            "layout": [
+                {"matrix": [0, 0], "x": 0, "y": 0},
+                {"matrix": [0, 1], "x": 1, "y": 0},
+                {"matrix": [1, 0], "x": 0, "y": 1},
+                {"matrix": [1, 1], "x": 1, "y": 1},
+
+                {"matrix": [2, 0], "x": 0, "y": 2},
+                {"matrix": [2, 1], "x": 1, "y": 2},
+                {"matrix": [3, 0], "x": 0, "y": 3},
+                {"matrix": [3, 1], "x": 1, "y": 3}
+            ]
+        }
+    }
+}
