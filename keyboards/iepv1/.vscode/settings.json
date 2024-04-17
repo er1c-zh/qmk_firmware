@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "serial_usart.h": "c",
+        "serial_protocol.h": "c"
+    }
+}

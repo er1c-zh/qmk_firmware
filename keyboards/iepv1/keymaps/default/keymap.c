@@ -13,6 +13,12 @@ enum layer_names {
     _CO,
 };
 
+enum my_keycodes {
+  EC_BASE = SAFE_RANGE,
+  EC_MTX_UP,
+  EC_MTX_DOWN
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_default(
         QK_GESC,        KC_Q,           KC_W,          KC_E,           KC_R,          KC_T,
@@ -70,20 +76,57 @@ void keyboard_post_init_user(void) {
   setPinOutputPushPull(B13);
 }
 
+bool ec_up_pressed = false;
+bool ec_down_pressed = false;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    return true;
+  switch (keycode) {
+    case EC_MTX_DOWN:
+      if (record->event.pressed) {
+        // Do something when pressed
+        if (ec_up_pressed) {
+            ec_up_pressed = false;
+            unregister_code(KC_UP);
+        }
+        ec_down_pressed = true;
+        register_code(KC_DOWN);
+      } else {
+        if (ec_down_pressed) {
+            unregister_code(KC_DOWN);
+        } else {
+            // do nothing
+        }
+      }
+      return false; // Skip all further processing of this key
+    case EC_MTX_UP:
+      if (record->event.pressed) {
+        // Do something when pressed
+        if (ec_down_pressed) {
+            ec_down_pressed = false;
+            unregister_code(KC_DOWN);
+        }
+        ec_up_pressed = true;
+        register_code(KC_UP);
+      } else {
+        if (ec_up_pressed) {
+            unregister_code(KC_UP);
+        } else {
+            // do nothing
+        }
+      }
+      return false; // Skip all further processing of this key
+    default:
+      return true; // Process all other keycodes normally
+  }
+  return true;
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    switch (get_highest_layer(state)) {
-    case 1:
+    if (IS_LAYER_ON_STATE(state, _CO)) {
         writePin(B13, true);
-        break;
-    default: //  for any other layers, or the default layer
+    } else {
         writePin(B13, false);
-        break;
     }
-  return state;
+    return state;
 }
 
 bool process_detected_host_os_kb(os_variant_t detected_os) {
