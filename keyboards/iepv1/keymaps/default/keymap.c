@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,        KC_VOLU,        _______,        _______,        _______,        _______,
         _______,        KC_VOLD,        _______,        _______,        _______,        _______,
         _______,        _______,        _______,        _______,        _______,        _______,
-        _______,        _______,        _______,        _______,        _______,        _______,
+        _______,        _______,        _______,        _______,        _______,        _______
     ),
     [_CO] = LAYOUT_default(
         KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_J,               KC_L,           KC_U,           KC_Y,            KC_SCLN,         KC_DELETE,
         KC_H,               KC_N,           KC_E,           KC_I,            KC_O,            KC_QUOT,
         KC_K,               KC_M,           KC_COMM,        KC_DOT,          KC_SLASH,        KC_RIGHT_SHIFT,
-        LT(_CO, KC_ENTER),  KC_SPACE,       A(KC_LSFT),     KC_CAPS,         DF(_QWERTY),     LT(_FN, )
+        LT(_CO, KC_ENTER),  KC_SPACE,       A(KC_LSFT),     KC_CAPS,         DF(_QWERTY),     MO(_FN)
     ),
 };
 
