@@ -172,8 +172,7 @@ const key_override_t tilde_esc_override = ko_make_basic(MOD_MASK_SHIFT, KC_ESC, 
 // GUI + esc = `
 const key_override_t grave_esc_override = ko_make_basic(MOD_MASK_CTRL, KC_ESC, KC_GRV);
 
-const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t *key_overrides[] = {
     &tilde_esc_override,
-    &grave_esc_override,
-    NULL
+    &grave_esc_override
 };
